@@ -28,6 +28,10 @@ const ProximasCarreras = () => {
                             height={500}
                             className="h-full w-full rounded-md md:rounded-lg object-cover"
                         />
+
+                        <button className="proximas_fecha absolute top-4 left-4">
+                        27 Abril 2025
+                        </button>
                     </div>
                     <div>
                         <div className="p-6 relative flex flex-col justify-between"

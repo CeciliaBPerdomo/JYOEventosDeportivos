@@ -90,21 +90,42 @@
 .proximas_inscribite_carrera {
     color: #FFF;
 
-text-align: center;
-/* Boton_Inscribite */
-font-family: 'Poppins', sans-serif;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    text-align: center;
+    /* Boton_Inscribite */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 
-width: 150px;
-height: 47px;
-padding: 13px 17px;
-justify-content: center;
-align-items: center;
-gap: 10px;
+    width: 150px;
+    height: 47px;
+    padding: 13px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 
-border-radius: 0px 20px 20px 20px;
-background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
+    border-radius: 0px 20px 20px 20px;
+    background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
+}
+
+.proximas_fecha {
+    color: #FFF;
+    text-align: center;
+
+    /* Fecha Carrera */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    border-radius: 20px 20px 0px 20px;
+    background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
+    width: 82px;
+    height: 85px;
+    padding: 13px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
