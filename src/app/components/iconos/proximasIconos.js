@@ -1,7 +1,7 @@
-const ProximasIconos = () => { 
+const ProximasIconos = () => {
     return (
         <div>
-<p>Iconos</p>
+            <p>Iconos</p>
         </div>
     )
 }

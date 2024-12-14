@@ -17,32 +17,32 @@ const Footer = () => {
                 flex justify-between">
                     <div className="p-5">
                         <div className="text-xs font-medium footer_titulos">Enlaces rápidos</div>
-                        <a className="my-3 block footer_encabezados" href="/#">
+                        <Link className="my-3 block footer_encabezados" href="/#">
                             Carreras
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block footer_encabezados" href="/#">
+                        </Link>
+                        <Link className="my-3 block footer_encabezados" href="/#">
                             Conoce nuestro equipo
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block footer_encabezados" href="/#">
+                        </Link>
+                        <Link className="my-3 block footer_encabezados" href="/#">
                             Términos y condiciones
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
+                        </Link>
 
                     </div>
                     <div className="p-5">
                         <div className="text-xs font-medium footer_titulos">Contáctanos</div>
-                        <a className="my-3 block flex footer_encabezados" href="/#">
+                        <Link className="my-3 block flex footer_encabezados" href="/#">
                             <Telefono />
                             <span className="mt-1">099 565 595 - 092 810 119</span>
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block flex footer_encabezados" href="/#">
+                        </Link>
+                        <Link className="my-3 block flex footer_encabezados" href="/#">
                             <Correo />
                             <span className="mt-1">contacto@pimpampum.com</span>
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="p-5">
@@ -58,14 +58,14 @@ const Footer = () => {
 
                     <div className="p-5">
                         <div className="text-xs font-medium footer_titulos">Equipo de Desarrollo</div>
-                        <a className="my-3 block footer_encabezados" href="/#">
+                        <Link className="my-3 block footer_encabezados" href="/#">
                             Diseño: Noelia Perdomo
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block footer_encabezados" href="/#">
+                        </Link>
+                        <Link className="my-3 block footer_encabezados" href="/#">
                             Desarrollo: Cecilia Perdomo
                             <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
