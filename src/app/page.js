@@ -1,9 +1,10 @@
-import Image from "next/image";
+import ProximasCarreras from "./components/proximas";
 
 export default function Home() {
   return (
-   <div className="">
-    <h1>JYO Eventos deportivos</h1>
-   </div>
+    <div className="">
+      <h1>JYO Eventos deportivos</h1>
+      <ProximasCarreras />
+    </div>
   );
 }

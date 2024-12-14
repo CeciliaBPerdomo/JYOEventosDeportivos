@@ -1,3 +1,13 @@
+import Link from "next/link"
+
+// Iconos
+import Correo from "./iconos/correo"
+import Instagram from "./iconos/instagram"
+import Telefono from "./iconos/telefono"
+
+//CSS
+import "../css_components/footer.css"
+
 const Footer = () => {
     return (
         <div>
@@ -6,45 +16,54 @@ const Footer = () => {
                 text-gray-800 flex flex-wrap justify-center 
                 flex justify-between">
                     <div className="p-5">
-                        <div className="text-xs uppercase text-gray-500 font-medium">Enlaces rápidos</div>
-                        <a className="my-3 block" href="/#">Carreras <span className="text-teal-600 text-xs p-1"></span>
+                        <div className="text-xs font-medium footer_titulos">Enlaces rápidos</div>
+                        <a className="my-3 block footer_encabezados" href="/#">
+                            Carreras
+                            <span className="text-teal-600 text-xs p-1"></span>
                         </a>
-                        <a className="my-3 block" href="/#">Conoce nuestro equipo<span className="text-teal-600 text-xs p-1"></span>
+                        <a className="my-3 block footer_encabezados" href="/#">
+                            Conoce nuestro equipo
+                            <span className="text-teal-600 text-xs p-1"></span>
                         </a>
-                        <a className="my-3 block" href="/#">Términos y condiciones <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        {/* <a className="my-3 block" href="/#">Pricing <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block" href="/#">Partners <span className="text-teal-600 text-xs p-1">New</span>
-                        </a> */}
-                    </div>
-                    <div className="p-5">
-                        <div className="text-xs uppercase text-gray-500 font-medium">Contáctanos</div>
-
-                        <a className="my-3 block" href="/#">099 565 595 - 092 810 119<span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block" href="/#">contacto@pimpampum.com<span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        {/* <a className="my-3 block" href="/#">Support <span className="text-teal-600 text-xs p-1">New</span>
-                        </a> */}
-                    </div>
-                    <div className="p-5">
-                        <div className="text-xs uppercase text-gray-500 font-medium">Seguinos en Instagram</div>
-                        <a className="my-3 block" href="/#">jyo_eventos_deportivos<span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        {/* <a className="my-3 block" href="/#">Privacy Policy <span className="text-teal-600 text-xs p-1"></span>
-                        </a>
-                        <a className="my-3 block" href="/#">Conditions <span className="text-teal-600 text-xs p-1"></span>
-                        </a> */}
-                    </div>
-                    <div className="p-5">
-                        <div className="text-xs uppercase text-gray-500 font-medium">Equipo de Desarrollo</div>
-
-                        <a className="my-3 block" href="/#">Diseño: Noelia Perdomo
+                        <a className="my-3 block footer_encabezados" href="/#">
+                            Términos y condiciones
                             <span className="text-teal-600 text-xs p-1"></span>
                         </a>
 
-                        <a className="my-3 block" href="/#">Desarrollo: Cecilia Perdomo
+                    </div>
+                    <div className="p-5">
+                        <div className="text-xs font-medium footer_titulos">Contáctanos</div>
+                        <a className="my-3 block flex footer_encabezados" href="/#">
+                            <Telefono />
+                            <span className="mt-1">099 565 595 - 092 810 119</span>
+                            <span className="text-teal-600 text-xs p-1"></span>
+                        </a>
+                        <a className="my-3 block flex footer_encabezados" href="/#">
+                            <Correo />
+                            <span className="mt-1">contacto@pimpampum.com</span>
+                            <span className="text-teal-600 text-xs p-1"></span>
+                        </a>
+                    </div>
+
+                    <div className="p-5">
+                        <div className="text-xs font-medium footer_titulos">Seguinos en Instagram</div>
+                        <Link
+                            className="my-3 block flex footer_encabezados"
+                            href="https://www.instagram.com/jyo_eventos_deportivos?igsh=Znh4NzJyZm5tbGlh">
+                            <Instagram />
+                            <span className="mt-1">jyo_eventos_deportivos</span>
+                            <span className="text-teal-600 text-xs p-1"></span>
+                        </Link>
+                    </div>
+
+                    <div className="p-5">
+                        <div className="text-xs font-medium footer_titulos">Equipo de Desarrollo</div>
+                        <a className="my-3 block footer_encabezados" href="/#">
+                            Diseño: Noelia Perdomo
+                            <span className="text-teal-600 text-xs p-1"></span>
+                        </a>
+                        <a className="my-3 block footer_encabezados" href="/#">
+                            Desarrollo: Cecilia Perdomo
                             <span className="text-teal-600 text-xs p-1"></span>
                         </a>
                     </div>

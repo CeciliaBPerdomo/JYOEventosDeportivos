@@ -1,5 +1,8 @@
+// Fuentes
 import localFont from "next/font/local";
 import "./globals.css";
+import { Poppins } from 'next/font/google';
+
 import Footer from "./components/footer";
 
 const geistSans = localFont({
@@ -12,6 +15,12 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const poppins = Poppins({
+  subsets: ['latin'], // Subconjunto recomendado
+  weight: ['400', '500', '600', '700'], // Selecciona los pesos que necesitas
+  variable: '--font-poppins', // Variable CSS opcional
 });
 
 export const metadata = {
