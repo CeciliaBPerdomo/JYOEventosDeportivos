@@ -35,3 +35,26 @@
     line-height: 117.7%;
     letter-spacing: -0.45px;
 }
+
+.proximas_inscripciones_abiertas {
+    background-color: #00AE70;
+    border-radius: 20px 0px 0px 20px;
+    width: 177px;
+    height: 46px;
+
+    color: #FFF;
+
+    text-align: center;
+    /* pestaña verde_Inscripciones abiertas */
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 117.7%;
+    letter-spacing: -0.45px;
+}
+
+.proximas_contenedor_inscripciones {
+    padding-left: 800px;
+    margin-bottom: -80px;
+}
