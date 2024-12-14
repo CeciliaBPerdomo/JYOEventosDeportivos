@@ -11,7 +11,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    margin-left: 60px;
+    margin-left: 30px;
 }
 
 .proximas_h4 {
@@ -57,4 +57,54 @@
 .proximas_contenedor_inscripciones {
     padding-left: 800px;
     margin-bottom: -80px;
+}
+
+.proximas_detalle_carrera {
+    background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+    /* Boton_Ver detalles de la carrera */
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 117.7%;
+    /* 25.894px */
+    letter-spacing: -0.66px;
+
+    border-radius: 20px;
+    border: 2px solid #00B6D2;
+
+    width: 300px;
+    height: 60px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.proximas_inscribite_carrera {
+    color: #FFF;
+
+text-align: center;
+/* Boton_Inscribite */
+font-family: 'Poppins', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+width: 150px;
+height: 47px;
+padding: 13px 17px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+
+border-radius: 0px 20px 20px 20px;
+background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
 }
