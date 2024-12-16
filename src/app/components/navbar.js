@@ -1,10 +1,12 @@
 import Link from "next/link"
+import Script from "next/script";
 
 // CSS
 import "../css_components/navbar.css"
 
 
 const Navbar = () => {
+
     return (
         <div>
             <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
@@ -78,7 +80,10 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+            <Script 
+                src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js" 
+                strategy="lazyOnload" 
+            />
         </div>
     )
 }
