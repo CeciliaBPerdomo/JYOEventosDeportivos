@@ -40,15 +40,15 @@ const Navbar = () => {
 
                     {/* Botones de sesión */}
                     <div className="flex flex-row mt-4 space-x-2 w-full justify-center lg:w-auto lg:mt-0">
-    <Link href=""
-        className="focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center navbar_iniciar_sesion">
-        INICIAR SESIÓN
-    </Link>
-    <Link href=""
-        className="focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center navbar_registrarse">
-        REGISTRARSE
-    </Link>
-</div>
+                        <Link href=""
+                            className="focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center navbar_iniciar_sesion">
+                            INICIAR SESIÓN
+                        </Link>
+                        <Link href=""
+                            className="focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center navbar_registrarse">
+                            REGISTRARSE
+                        </Link>
+                    </div>
                 </div>
             </nav>
         </div>
