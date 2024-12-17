@@ -1,73 +1,78 @@
-import Script from "next/script";
+"use client"; 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const images = [
+    "/images/banner/Banner_portada_1.jpg", // Asegúrate de reemplazar con tus rutas de imágenes
+    "/images/banner/Banner_portada_2.jpg",
+    "/images/banner/Banner_portada_3.jpg",
+    "/images/banner/Banner_portada_4.jpg",
+];
+
 const Banner = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          nextSlide();
+        }, 10000); // 10 segundos
+    
+        // Limpiar intervalo al desmontar el componente
+        return () => clearInterval(interval);
+      }, [currentIndex]); // Dependencia para reiniciar el intervalo cuando cambia el índice
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    };
+
     return (
-        <div id="default-carousel" className="relative rounded-lg overflow-hidden shadow-lg" data-carousel="static">
-            {/* Carousel wrapper */}
-            <div className="relative h-80 md:h-96" data-carousel-inner>
-                {/* Item 1 */}
-                <div className="relative duration-700 ease-in-out block" data-carousel-item>
-                    <div className="relative w-full h-full">
-                        <Image
-                            src="/images/banner/Banner_portada_1.jpg"
-                            width={1200}
-                            height={700}
-                            alt="Slide 1"
-                            className="object-cover w-full h-full"
-                        />
-                    </div>
-                </div>
-                {/* Item 2 */}
-                <div className="relative duration-700 ease-in-out hidden" data-carousel-item>
+        <div className="relative w-full overflow-hidden mt-3">
+            {/* Contenedor de Imágenes */}
+            <div
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+                {images.map((src, index) => (
                     <Image
-                        src="/images/banner/Banner_portada_2.jpg"
-                        width={1200}
-                        height={700}
-                        alt="Slide 2"
-                        className="object-cover w-full h-full"
+                        key={index}
+                        src={src}
+                        width={1500}
+                        height={1500}
+                        alt={`Slide ${index}`}
+                        className="w-full flex-shrink-0 object-cover h-[300px] md:h-[500px] lg:h-[600px]"
                     />
-                </div>
-                {/* Item 3 */}
-                <div className="relative duration-700 ease-in-out hidden" data-carousel-item>
-                    <img
-                        src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
-                        className="object-cover w-full h-full"
-                        alt="Slide 3"
-                    />
-                </div>
+                ))}
             </div>
 
-            {/* Slider indicators */}
-            <div className="flex absolute bottom-5 left-1/2 z-30 -translate-x-1/2 space-x-2" data-carousel-indicators>
-                <button type="button" className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
-                <button type="button" className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
-                <button type="button" className="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+            {/* Botones de Navegación */}
+            <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full opacity-70 hover:opacity-100"
+            >
+                &#10094;
+            </button>
+            <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full opacity-70 hover:opacity-100"
+            >
+                &#10095;
+            </button>
+
+            {/* Indicadores */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {images.map((_, index) => (
+                    <div
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className={`h-3 w-3 rounded-full ${currentIndex === index ? "bg-white" : "bg-gray-400"
+                            } cursor-pointer`}
+                    ></div>
+                ))}
             </div>
-
-            {/* Slider controls */}
-            <button type="button"
-                className="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
-                data-carousel-prev>
-                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-            </button>
-            <button type="button"
-                className="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
-                data-carousel-next>
-                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </button>
-
-            {/* Script para Flowbite */}
-            <Script
-                src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"
-                strategy="afterInteractive"
-            />
         </div>
     );
 };
