@@ -1,5 +1,7 @@
 import Image from "next/image"
 
+//CSS 
+import "./equipo.css"
 const CardsEquipo = () => {
 
     let equipo = [
@@ -38,7 +40,7 @@ const CardsEquipo = () => {
                             </div>
                         </div>
                         <div className="px-6 py-4">
-                            <p className="text-gray-500 text-sm">
+                            <p className="cards_equipo_texto">
                                 {integrante.texto}
                             </p>
                         </div>

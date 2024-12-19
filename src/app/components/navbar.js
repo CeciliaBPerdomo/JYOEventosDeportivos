@@ -1,9 +1,39 @@
+"use client"
+import { useState } from "react";
 import Link from "next/link";
+
+import ModalRegistro from "../admin/registro/page";
 
 // CSS
 import "../css_components/navbar.css";
 
 const Navbar = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    let menuprincipal = [
+        {
+            titulo: "Carreras",
+            vinculo: "/carreras"
+        },
+        {
+            titulo: "Conoce a nuestro equipo",
+            vinculo: "/equipo"
+        },
+        {
+            titulo: "Contáctanos",
+            vinculo: "/contacto"
+        },
+    ]
+
+
     return (
         <div>
             <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
@@ -18,43 +48,37 @@ const Navbar = () => {
 
                     {/* Menú principal */}
                     <ul className="flex flex-wrap items-center justify-center space-x-6 lg:space-x-8 font-medium">
-                        <li>
-                            <Link href="/carreras"
-                                className="text-gray-700 
+                        {menuprincipal.map((menu, index) => (
+                            <li key={index}>
+                                <Link href={menu.vinculo}
+                                    className="text-gray-700 
                                 hover:underline
                                 decoration-[#00B6D2]
                                 dark:text-gray-400 
                                 dark:hover:text-white">
-                                Carreras
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/equipo"
-                                className="text-gray-700 hover:text-purple-700 dark:text-gray-400 dark:hover:text-white">
-                                Conoce nuestro equipo
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/contacto"
-                                className="text-gray-700 hover:text-purple-700 dark:text-gray-400 dark:hover:text-white">
-                                Contáctanos
-                            </Link>
-                        </li>
+                                    {menu.titulo}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
 
                     {/* Botones de sesión */}
                     <div className="flex flex-row mt-4 space-x-2 w-full justify-center lg:w-auto lg:mt-0">
                         <Link href=""
-                            className="focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center navbar_iniciar_sesion">
+                            className="text-center navbar_iniciar_sesion">
                             INICIAR SESIÓN
                         </Link>
-                        <Link href=""
-                            className="focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center navbar_registrarse">
+                        <button
+                            onClick={handleOpenModal}
+                            className="text-center navbar_registrarse">
                             REGISTRARSE
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </nav>
+
+            {/* Modal */}
+            <ModalRegistro isOpen={isModalOpen} onClose={handleCloseModal} />
         </div>
     );
 };
