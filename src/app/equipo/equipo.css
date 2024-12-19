@@ -1,0 +1,13 @@
+.equipo_conoce_h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 117.7%;
+    /* 40.018px */
+    letter-spacing: -1.02px;
+    background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

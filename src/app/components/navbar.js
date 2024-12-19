@@ -19,19 +19,23 @@ const Navbar = () => {
                     {/* Menú principal */}
                     <ul className="flex flex-wrap items-center justify-center space-x-6 lg:space-x-8 font-medium">
                         <li>
-                            <Link href="#"
-                                className="text-gray-700 hover:text-purple-700 dark:text-gray-400 dark:hover:text-white">
+                            <Link href="/carreras"
+                                className="text-gray-700 
+                                hover:underline
+                                decoration-[#00B6D2]
+                                dark:text-gray-400 
+                                dark:hover:text-white">
                                 Carreras
                             </Link>
                         </li>
                         <li>
-                            <Link href="#"
+                            <Link href="/equipo"
                                 className="text-gray-700 hover:text-purple-700 dark:text-gray-400 dark:hover:text-white">
                                 Conoce nuestro equipo
                             </Link>
                         </li>
                         <li>
-                            <Link href="#"
+                            <Link href="/contacto"
                                 className="text-gray-700 hover:text-purple-700 dark:text-gray-400 dark:hover:text-white">
                                 Contáctanos
                             </Link>
