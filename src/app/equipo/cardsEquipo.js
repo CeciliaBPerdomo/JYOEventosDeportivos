@@ -13,12 +13,12 @@ const CardsEquipo = () => {
         {
             foto: "/images/nuestro_equipo/Natalia_Activa.jpg",
             alternativo: "Natalia",
-            texto: ""
+            texto: "Profesional destacada que se desempeña como codirectora y fotógrafa en Mundo Running TV. Asimismo, como deportista aficiona combina su pasión por el deporte con su compromiso empresarial."
         },
         {
             foto: "/images/nuestro_equipo/Omi_Activo.jpg",
             alternativo: "Omar",
-            texto: ""
+            texto: "Deportista destacado, ha demostrado su excelencia como triatleta y campeón uruguayo en carreras de aventura. Desde 2013 se destaca como organizador de eventos deportivos y fundador de Colonia Aventura Corre, siendo referente en Colonia y la región."
         }
     ]
 
