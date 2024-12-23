@@ -24,7 +24,16 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0;
+
+    color: #000;
+    text-align: center;
+
+    /* Boton_Inscribite */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .modal_registro_label {
@@ -41,5 +50,36 @@
     height: 40px;
     align-self: stretch;
     border-radius: 6px;
-    background: #EFEFEF;
+    /* background: #EFEFEF; */
+}
+
+.modal_registro_botoncancelar {
+    border-radius: 0px 20px 20px 20px;
+    border: 1px solid #FFF;
+
+    display: flex;
+    height: 47px;
+    padding: 13px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.modal_registro_ya_tienes {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    /* 272.727% */
 }
