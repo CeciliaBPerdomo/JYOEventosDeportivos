@@ -6,9 +6,11 @@ import ModalRegistro from "../admin/registro/page";
 
 // CSS
 import "../css_components/navbar.css";
+import ModalInicioSesion from "../admin/inicio_sesion/page";
 
 const Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isInicioSesionOpen, setIsInicioSesionOpen] = useState(false);
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -16,6 +18,14 @@ const Navbar = () => {
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
+    };
+
+    const handleOpenInicioSesion = () => {
+        setIsInicioSesionOpen(true);
+    };
+
+    const handleCloseInicioSesion = () => {
+        setIsInicioSesionOpen(false);
     };
 
     let menuprincipal = [
@@ -64,10 +74,11 @@ const Navbar = () => {
 
                     {/* Botones de sesión */}
                     <div className="flex flex-row mt-4 space-x-2 w-full justify-center lg:w-auto lg:mt-0">
-                        <Link href=""
+                        <button href=""
+                            onClick={handleOpenInicioSesion}
                             className="text-center navbar_iniciar_sesion">
                             INICIAR SESIÓN
-                        </Link>
+                        </button>
                         <button
                             onClick={handleOpenModal}
                             className="text-center navbar_registrarse">
@@ -79,6 +90,7 @@ const Navbar = () => {
 
             {/* Modal */}
             <ModalRegistro isOpen={isModalOpen} onClose={handleCloseModal} />
+            <ModalInicioSesion isOpen={isInicioSesionOpen} onClose={handleCloseInicioSesion} />
         </div>
     );
 };
