@@ -17,11 +17,11 @@ const Footer = () => {
                 flex justify-between">
                     <div className="p-5">
                         <div className="text-xs font-medium footer_titulos">Enlaces rápidos</div>
-                        <Link className="my-3 block footer_encabezados" href="/#">
+                        <Link className="my-3 block footer_encabezados" href="/carreras">
                             Carreras
                             <span className="text-teal-600 text-xs p-1"></span>
                         </Link>
-                        <Link className="my-3 block footer_encabezados" href="/#">
+                        <Link className="my-3 block footer_encabezados" href="/equipo">
                             Conoce nuestro equipo
                             <span className="text-teal-600 text-xs p-1"></span>
                         </Link>
