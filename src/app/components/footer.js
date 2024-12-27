@@ -58,11 +58,11 @@ const Footer = () => {
 
                     <div className="p-5">
                         <div className="text-xs font-medium footer_titulos">Equipo de Desarrollo</div>
-                        <Link className="my-3 block footer_encabezados" href="/#">
+                        <Link className="my-3 block footer_encabezados" href="/">
                             Diseño UX/UI: Noelia Perdomo
                             <span className="text-teal-600 text-xs p-1"></span>
                         </Link>
-                        <Link className="my-3 block footer_encabezados" href="/#">
+                        <Link className="my-3 block footer_encabezados" href="/">
                             Desarrollo web: Cecilia Perdomo
                             <span className="text-teal-600 text-xs p-1"></span>
                         </Link>
