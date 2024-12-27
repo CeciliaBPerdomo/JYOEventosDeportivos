@@ -3,52 +3,87 @@
     background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
 }
 
-.modal_inicio_sesion_botoniniciar {
-    display: flex;
-    width: 150px;
-    height: 47px;
-    padding: 13px 17px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-
-    border-radius: 0px 20px 20px 20px;
-    border: 1px solid #FFF;
-    background: #FFF;
-
-    color: #000;
-    text-align: center;
-
-    /* Boton_Inscribite */
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
+.modal_inicio_sesion_botoniniciar,
 .modal_inicio_sesion_botoncancelar {
     display: flex;
+    width: 150px; /* Igual ancho */
     height: 47px;
-    width: 150px;
-
     padding: 13px 17px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    flex: 1 0 0;
+
     border-radius: 0px 20px 20px 20px;
-    border: 1px solid #FFF;
-
-    color: #FFF;
-    text-align: center;
-
-    /* Boton_Inscribite */
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    text-align: center;
+}
 
+/* Botón específico para iniciar sesión */
+.modal_inicio_sesion_botoniniciar {
+    border: 1px solid #FFF;
+    background: #FFF;
+    color: #000;
+}
+
+/* Botón específico para cancelar */
+.modal_inicio_sesion_botoncancelar {
+    border: 1px solid #FFF;
+    background: transparent; /* Si no deseas fondo */
+    color: #FFF;
+}
+
+
+.modal_inicio_titulo {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    /* 125% */
+}
+
+.modal_inicio_labels {
+    font-family: 'Poppins', sans-serif;
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    /* 214.286% */
+}
+
+.modal_inicio_inputs {
+    display: flex;
+    width: 311px;
+    height: 40px;
+    padding: 13px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 6px;
+    background: #EFEFEF;
+
+    color: #B6B6B6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    /* 300% */
+}
+
+.modal_inicio_sincuenta {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 30px;
+    /* 272.727% */
 }

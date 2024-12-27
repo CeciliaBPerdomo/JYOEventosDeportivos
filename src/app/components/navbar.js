@@ -74,7 +74,7 @@ const Navbar = () => {
 
                     {/* Botones de sesión */}
                     <div className="flex flex-row mt-4 space-x-2 w-full justify-center lg:w-auto lg:mt-0">
-                        <button href=""
+                        <button 
                             onClick={handleOpenInicioSesion}
                             className="text-center navbar_iniciar_sesion">
                             INICIAR SESIÓN
