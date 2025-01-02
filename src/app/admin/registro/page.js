@@ -14,7 +14,6 @@ import "./modalRegistro.css"
 import { ConfirmationModal } from "./confirmationModal"
 
 const ModalRegistro = ({ isOpen, onClose }) => {
-    if (!isOpen) return null; // No renderiza si el modal no está abierto.
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
     const dispatch = useDispatch();
@@ -71,6 +70,8 @@ const ModalRegistro = ({ isOpen, onClose }) => {
 
     }
 
+    if (!isOpen) return null; // No renderiza si el modal no está abierto.
+    
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96 modal_registro_fondo">
