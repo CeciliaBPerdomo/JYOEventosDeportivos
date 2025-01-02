@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Firebase 
 import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../app/firebase/config';
+import { db } from '../firebase/config.js';
 
 // Thunk para agregar un usuario con ID secuencial y verificación de email
 export const agregarUsuario = createAsyncThunk(
@@ -14,6 +14,7 @@ export const agregarUsuario = createAsyncThunk(
             // Verificar si el email ya existe en Firestore
             const q = query(collection(db, "usuarios"), where("email", "==", values.email));
             const querySnapshot = await getDocs(q);
+
 
             if (!querySnapshot.empty) {
                 return rejectWithValue("El email ya está registrado");
@@ -36,7 +37,8 @@ export const agregarUsuario = createAsyncThunk(
             const docRef = doc(db, "usuarios", String(values.cedula)); // Usa el ID como la clave del documento
             await setDoc(docRef, userWithId);
 
-            return userWithId;
+
+            return true;
         } catch (error) {
             return rejectWithValue(error.message);
         }

@@ -1,13 +1,24 @@
 "use client"
 import { useState } from "react";
-
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+// Guardar nuevo usuario
+import { useDispatch } from 'react-redux'
+import { agregarUsuario } from "@/app/lib/userSlice";
 
 //CSS
 import "./modalRegistro.css"
 
+// Confirmacion 
+import { ConfirmationModal } from "./confirmationModal"
+
 const ModalRegistro = ({ isOpen, onClose }) => {
     if (!isOpen) return null; // No renderiza si el modal no está abierto.
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+    const dispatch = useDispatch();
+    const router = useRouter();
 
     // Para guardar la info
     const initialValues = {
@@ -28,9 +39,36 @@ const ModalRegistro = ({ isOpen, onClose }) => {
         });
     }
 
+    const handleClose = () => {
+        setShowConfirmationModal(false);
+        onClose(); // Cerrar el modal de registro
+        router.push("/")
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(values)
+
+        try {
+            let resp = await dispatch(agregarUsuario(values))
+
+            if (resp.payload == "El email ya está registrado"){ 
+                console.log(resp.payload)
+                return
+            }
+          
+            if (resp.meta.requestStatus === "fulfilled") {
+                setShowConfirmationModal(true); // Mostrar el modal de confirmación
+
+                setTimeout(() => {
+                    setShowConfirmationModal(false); // Cerrar el modal de confirmación
+                    onClose(); // Cerrar el modal de registro
+                    router.push("/"); // Redirigir al home
+                }, 2000); // Tiempo antes de cerrar los modales (2 segundos)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     return (
@@ -171,6 +209,7 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                 </form>
                 <p className="modal_registro_ya_tienes">¿Ya tienes una cuenta? Iniciar sesión </p>
             </div>
+            <ConfirmationModal isOpen={showConfirmationModal} isClose={handleClose} />
         </div>
     );
 };
