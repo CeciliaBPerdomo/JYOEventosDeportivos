@@ -1,11 +1,77 @@
+"use client"
+import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+// Guardar nuevo usuario
+import { useDispatch } from 'react-redux'
+import { agregarUsuario } from "@/app/lib/userSlice";
 
 //CSS
 import "./modalRegistro.css"
 
-const ModalRegistro = ({ isOpen, onClose }) => {
-    if (!isOpen) return null; // No renderiza si el modal no está abierto.
+// Confirmacion 
+import { ConfirmationModal } from "./confirmationModal"
 
+const ModalRegistro = ({ isOpen, onClose }) => {
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
+    const dispatch = useDispatch();
+    const router = useRouter();
+
+    // Para guardar la info
+    const initialValues = {
+        nombre: "",
+        cedula: "",
+        celular: "",
+        email: "",
+        password: ""
+    }
+
+    const [values, setValues] = useState(initialValues)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues({
+            ...values,
+            [name]: value
+        });
+    }
+
+    const handleClose = () => {
+        setShowConfirmationModal(false);
+        onClose(); // Cerrar el modal de registro
+        router.push("/")
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+            let resp = await dispatch(agregarUsuario(values))
+
+            if (resp.payload == "El email ya está registrado"){ 
+                console.log(resp.payload)
+                return
+            }
+          
+            if (resp.meta.requestStatus === "fulfilled") {
+                setShowConfirmationModal(true); // Mostrar el modal de confirmación
+
+                setTimeout(() => {
+                    setShowConfirmationModal(false); // Cerrar el modal de confirmación
+                    onClose(); // Cerrar el modal de registro
+                    router.push("/"); // Redirigir al home
+                }, 2000); // Tiempo antes de cerrar los modales (2 segundos)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    if (!isOpen) return null; // No renderiza si el modal no está abierto.
+    
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96 modal_registro_fondo">
@@ -34,6 +100,9 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                                 type="text"
                                 className="w-full modal_registro_input pl-10"
                                 placeholder="Nombre completo"
+                                name="nombre"
+                                value={values.nombre}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -41,10 +110,12 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                     <div className="mb-4">
                         <label className="block modal_registro_label">Documento de identidad</label>
                         <div className="flex items-center relative">
+
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width="13" height="9"
                                 viewBox="0 0 13 9" fill="none"
                                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+
                                 <path d="M6.21422 7.64283C6.21422 7.15549 6.21422 6.91182 6.15271 6.71354C6.01421 6.26712 5.65692 5.91776 5.20035 5.78234C4.99756 5.72219 4.74835 5.72219 4.24994 5.72219H2.46423C1.96581 5.72219 1.7166 5.72219 1.51382 5.78234C1.05724 5.91776 0.699953 6.26712 0.561453 6.71354C0.499939 6.91182 0.499939 7.15549 0.499939 7.64283M4.96422 2.92855C4.96422 3.79642 4.24468 4.49997 3.35708 4.49997C2.46948 4.49997 1.74994 3.79642 1.74994 2.92855C1.74994 2.06067 2.46948 1.35712 3.35708 1.35712C4.24468 1.35712 4.96422 2.06067 4.96422 2.92855Z"
                                     stroke="#101828" strokeLinecap="round" strokeLinejoin="round" />
                                 <line x1="7.92865" y1="2.57141" x2="12.5001" y2="2.57141" stroke="black" />
@@ -55,6 +126,9 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                                 type="text"
                                 className="w-full modal_registro_input pl-12"
                                 placeholder="Documento sin puntos ni guiones"
+                                name="cedula"
+                                value={values.cedula}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -64,6 +138,7 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                         <div className="flex items-center relative">
                             <Image
                                 src={"/images/iconos/tel_icon.jpg"}
+                                alt="celular"
                                 width={15}
                                 height={15}
                                 alt="Celular"
@@ -73,6 +148,9 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                                 type="text"
                                 className="w-full modal_registro_input pl-10"
                                 placeholder="Celular"
+                                name="celular"
+                                value={values.celular}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -82,6 +160,7 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                         <div className="flex items-center relative">
                             <Image
                                 src={"/images/iconos/email_icon.jpg"}
+                                alt="correo"
                                 width={15}
                                 height={15}
                                 alt="Correo"
@@ -91,6 +170,9 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                                 type="text"
                                 className="w-full modal_registro_input pl-12"
                                 placeholder="Correo electrónico"
+                                name="email"
+                                value={values.email}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -106,9 +188,12 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                             />
                             <input
-                                type="text"
+                                type="password"
                                 className="w-full modal_registro_input pl-12"
                                 placeholder="Contraseña"
+                                name="password"
+                                value={values.password}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -116,8 +201,10 @@ const ModalRegistro = ({ isOpen, onClose }) => {
 
                     <div className="flex justify-center items-center">
                         <button
-                            type="submit"
-                            className="modal_registro_botonregistro mr-5 uppercase">
+                            type="button"
+                            className="modal_registro_botonregistro mr-5 uppercase"
+                            onClick={(e) => handleSubmit(e)}
+                        >
                             Registrarse
                         </button>
 
@@ -130,6 +217,7 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                 </form>
                 <p className="modal_registro_ya_tienes">¿Ya tienes una cuenta? Iniciar sesión </p>
             </div>
+            <ConfirmationModal isOpen={showConfirmationModal} isClose={handleClose} />
         </div>
     );
 };
