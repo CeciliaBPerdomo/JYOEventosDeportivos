@@ -1,9 +1,55 @@
-//"use client";
+"use client";
+import { useState } from "react";
+import { useRouter } from 'next/navigation';
+
+//Redux
+import { useDispatch } from 'react-redux';
+import { loginUsuario } from "@/app/lib/userSlice";
 
 // CSS 
 import "./inicio_sesion.css"
 
 const ModalInicioSesion = ({ isOpen, onClose }) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+
+    // Para guardar la info
+    const initialValues = {
+        email: "",
+        password: ""
+    }
+
+    const [values, setValues] = useState(initialValues)
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues({
+            ...values,
+            [name]: value
+        });
+    }
+
+    // Iniciar sesion
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        //        setLoading(true);  // Activar el loader
+        let resp = handleChequeo()
+
+        try {
+            if (resp) {
+                // Disparar la acción de inicio de sesión
+                const userLoggedIn = await dispatch(loginUsuario(values)).unwrap();
+
+                setValues(initialValues)
+                //               setLoading(false);
+                router.push('/')
+            }
+        } catch (error) {
+            //           setLoading(false);
+            console.log(error)
+        }
+    }
+
     if (!isOpen) return null;
 
     return (
@@ -41,6 +87,9 @@ const ModalInicioSesion = ({ isOpen, onClose }) => {
                                 type="email"
                                 className="w-full p-2 pl-10 border rounded modal_inicio_inputs"
                                 placeholder="Ingresa tu correo"
+                                name="email"
+                                value={values.email}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -66,16 +115,17 @@ const ModalInicioSesion = ({ isOpen, onClose }) => {
                                 type="password"
                                 className="w-full p-2 pl-10 border rounded modal_inicio_inputs"
                                 placeholder="Ingresa tu contraseña"
+                                name="password"
+                                value={values.password}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
 
-
-
                     {/* Submit Button */}
                     <div className="flex justify-center items-center">
                         <button
-                            type="submit"
+                            type="button"
                             className="modal_inicio_sesion_botoniniciar mr-5 uppercase">
                             INICIAR SESIÓN
                         </button>
