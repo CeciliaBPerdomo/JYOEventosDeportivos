@@ -12,9 +12,15 @@ import "./modalRegistro.css"
 
 // Confirmacion 
 import { ConfirmationModal } from "./confirmationModal"
+// Mensaje de error 
+import { ErrorModal } from "./errorModal";
 
 const ModalRegistro = ({ isOpen, onClose }) => {
+    // Modal de confirmacion
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    // Modal de mensaje de error
+    const [errorMessage, setErrorMessage] = useState("");
+    const [showErrorModal, setShowErrorModal] = useState(false);
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -38,10 +44,16 @@ const ModalRegistro = ({ isOpen, onClose }) => {
         });
     }
 
+    // Modal de confirmacion
     const handleClose = () => {
         setShowConfirmationModal(false);
         onClose(); // Cerrar el modal de registro
         router.push("/")
+    };
+
+    // Modal de error
+    const handleErrorClose = () => {
+        setShowErrorModal(false);
     };
 
     const handleSubmit = async (e) => {
@@ -50,11 +62,12 @@ const ModalRegistro = ({ isOpen, onClose }) => {
         try {
             let resp = await dispatch(agregarUsuario(values))
 
-            if (resp.payload == "El email ya está registrado"){ 
-                console.log(resp.payload)
+            if (resp.payload == "El email ya está registrado") {
+                setErrorMessage("El email ingresado ya está registrado. Intenta con otro. O inicia sesión.");
+                setShowErrorModal(true);
                 return
             }
-          
+
             if (resp.meta.requestStatus === "fulfilled") {
                 setShowConfirmationModal(true); // Mostrar el modal de confirmación
 
@@ -65,13 +78,15 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                 }, 2000); // Tiempo antes de cerrar los modales (2 segundos)
             }
         } catch (error) {
-            console.log(error)
+            setErrorMessage("Hubo un error al registrar al usuario. Intenta nuevamente más tarde.");
+            setShowErrorModal(true);
+            return
         }
 
     }
 
     if (!isOpen) return null; // No renderiza si el modal no está abierto.
-    
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96 modal_registro_fondo">
@@ -215,7 +230,17 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                 </form>
                 <p className="modal_registro_ya_tienes">¿Ya tienes una cuenta? Iniciar sesión </p>
             </div>
-            <ConfirmationModal isOpen={showConfirmationModal} isClose={handleClose} />
+            {/* Modal de confirmacion */}
+            <ConfirmationModal
+                isOpen={showConfirmationModal}
+                isClose={handleClose}
+            />
+            {/* Modal de mensaje de error */}
+            <ErrorModal
+                isOpen={showErrorModal}
+                onClose={handleErrorClose}
+                message={errorMessage}
+            />
         </div>
     );
 };
