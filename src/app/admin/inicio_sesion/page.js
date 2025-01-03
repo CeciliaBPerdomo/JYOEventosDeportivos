@@ -32,20 +32,19 @@ const ModalInicioSesion = ({ isOpen, onClose }) => {
     // Iniciar sesion
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //        setLoading(true);  // Activar el loader
-        let resp = handleChequeo()
+        // setLoading(true);  // Activar el loader
 
         try {
-            if (resp) {
-                // Disparar la acción de inicio de sesión
-                const userLoggedIn = await dispatch(loginUsuario(values)).unwrap();
+            // Disparar la acción de inicio de sesión
+            const userLoggedIn = await dispatch(loginUsuario(values)).unwrap();
+//            console.log(userLoggedIn)
+            onClose()
+            setValues(initialValues)
+            // setLoading(false);
+            router.push('/')
 
-                setValues(initialValues)
-                //               setLoading(false);
-                router.push('/')
-            }
         } catch (error) {
-            //           setLoading(false);
+            //setLoading(false);
             console.log(error)
         }
     }
@@ -126,7 +125,9 @@ const ModalInicioSesion = ({ isOpen, onClose }) => {
                     <div className="flex justify-center items-center">
                         <button
                             type="button"
-                            className="modal_inicio_sesion_botoniniciar mr-5 uppercase">
+                            className="modal_inicio_sesion_botoniniciar mr-5 uppercase"
+                            onClick={handleSubmit}
+                        >
                             INICIAR SESIÓN
                         </button>
 
