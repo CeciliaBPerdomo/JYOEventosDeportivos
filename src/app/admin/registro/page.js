@@ -138,7 +138,6 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                         <div className="flex items-center relative">
                             <Image
                                 src={"/images/iconos/tel_icon.jpg"}
-                                alt="celular"
                                 width={15}
                                 height={15}
                                 alt="Celular"
@@ -163,7 +162,6 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                                 alt="correo"
                                 width={15}
                                 height={15}
-                                alt="Correo"
                                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                             />
                             <input
