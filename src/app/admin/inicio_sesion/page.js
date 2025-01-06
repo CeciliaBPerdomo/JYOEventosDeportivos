@@ -9,7 +9,7 @@ import { loginUsuario } from "@/app/lib/userSlice";
 // CSS 
 import "./inicio_sesion.css"
 
-const ModalInicioSesion = ({ isOpen, onClose }) => {
+const ModalInicioSesion = ({ isOpen, onClose, onSwitch }) => {
     const router = useRouter();
     const dispatch = useDispatch();
 
@@ -37,7 +37,7 @@ const ModalInicioSesion = ({ isOpen, onClose }) => {
         try {
             // Disparar la acción de inicio de sesión
             const userLoggedIn = await dispatch(loginUsuario(values)).unwrap();
-//            console.log(userLoggedIn)
+            //            console.log(userLoggedIn)
             onClose()
             setValues(initialValues)
             // setLoading(false);
@@ -139,7 +139,17 @@ const ModalInicioSesion = ({ isOpen, onClose }) => {
                     </div>
                 </form>
                 <div className="mt-4 text-center modal_inicio_sincuenta">
-                    <p> ¿No tienes cuenta? Regístrate aquí </p>
+
+                    <p> ¿No tienes cuenta? {" "}
+                        <span
+                            onClick={() => {
+                                onClose(); // Cerrar el modal actual
+                                onSwitch(); // Abrir el modal de registro
+                            }}
+                        >
+                            Regístrate aquí
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>

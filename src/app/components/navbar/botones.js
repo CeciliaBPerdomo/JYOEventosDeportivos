@@ -20,21 +20,10 @@ export const BotonesInicio = () => {
     // Acceder al estado de autenticación desde Redux
     const currentUser = useSelector((state) => state.usuarios.currentUser);
 
-    const handleOpenModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    };
-
-    const handleOpenInicioSesion = () => {
-        setIsInicioSesionOpen(true);
-    };
-
-    const handleCloseInicioSesion = () => {
-        setIsInicioSesionOpen(false);
-    };
+    const handleOpenModal = () => setIsModalOpen(true);
+    const handleCloseModal = () => setIsModalOpen(false);
+    const handleOpenInicioSesion = () => setIsInicioSesionOpen(true);
+    const handleCloseInicioSesion = () => setIsInicioSesionOpen(false);
 
     useEffect(() => {
         const savedUser = localStorage.getItem('currentUser');
@@ -68,9 +57,18 @@ export const BotonesInicio = () => {
                 )
             }
 
-            {/* Modal */}
-            <ModalRegistro isOpen={isModalOpen} onClose={handleCloseModal} />
-            <ModalInicioSesion isOpen={isInicioSesionOpen} onClose={handleCloseInicioSesion} />
+            {/* Modal registro */}
+            <ModalRegistro
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+            />
+
+            {/* Modal de inicio de sesion */}
+            <ModalInicioSesion
+                isOpen={isInicioSesionOpen}
+                onClose={handleCloseInicioSesion}
+                onSwitch={handleOpenModal}
+            />
         </>
     )
 }

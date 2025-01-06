@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 // Guardar nuevo usuario
 import { useDispatch } from 'react-redux'
-import { agregarUsuario } from "@/app/lib/userSlice";
+import { agregarUsuario, loginUsuario } from "@/app/lib/userSlice";
 
 //CSS
 import "./modalRegistro.css"
@@ -60,7 +60,7 @@ const ModalRegistro = ({ isOpen, onClose }) => {
         e.preventDefault()
 
         try {
-            let resp = await dispatch(agregarUsuario(values))
+            let resp = await dispatch(agregarUsuario(values)).unwrap()
 
             if (resp.payload == "El email ya está registrado") {
                 setErrorMessage("El email ingresado ya está registrado. Intenta con otro. O inicia sesión.");
@@ -69,6 +69,11 @@ const ModalRegistro = ({ isOpen, onClose }) => {
             }
 
             if (resp.meta.requestStatus === "fulfilled") {
+                let user = {
+                    email: values.email,
+                    password: values.password
+                }
+                await dispatch(loginUsuario(user)).unwrap()
                 setShowConfirmationModal(true); // Mostrar el modal de confirmación
 
                 setTimeout(() => {
