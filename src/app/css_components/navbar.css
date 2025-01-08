@@ -60,3 +60,14 @@
     font-weight: 600;
     line-height: normal;
 }
+
+.navbar_bienvenida{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    /* Color de la letra */
+    background: var(--Turquesa-degrade, linear-gradient(90deg, #00B6D2 0.29%, #005E6C 99.71%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
