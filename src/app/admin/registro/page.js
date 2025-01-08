@@ -7,6 +7,9 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux'
 import { agregarUsuario, loginUsuario } from "@/app/lib/userSlice";
 
+// Abre el modal de inicio de sesion
+import { openLoginModal } from "@/app/lib/modalSlice";
+
 //CSS
 import "./modalRegistro.css"
 
@@ -15,7 +18,7 @@ import { ConfirmationModal } from "./confirmationModal"
 // Mensaje de error 
 import { ErrorModal } from "./errorModal";
 
-const ModalRegistro = ({ isOpen, onClose }) => {
+const ModalRegistro = ({ isOpen, onClose, onSwitch }) => {
     // Modal de confirmacion
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     // Modal de mensaje de error
@@ -233,7 +236,16 @@ const ModalRegistro = ({ isOpen, onClose }) => {
                         </button>
                     </div>
                 </form>
-                <p className="modal_registro_ya_tienes">¿Ya tienes una cuenta? Iniciar sesión </p>
+                <p className="modal_registro_ya_tienes">¿Ya tienes una cuenta?  {" "}
+                <span 
+                onClick={() => {
+                    onSwitch()
+                    onClose(); // Cerrar el modal de registro
+                }}
+                >
+                Iniciar sesión 
+                </span>
+                </p>
             </div>
             {/* Modal de confirmacion */}
             <ConfirmationModal
