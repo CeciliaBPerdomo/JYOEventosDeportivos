@@ -44,9 +44,10 @@ const Detalles = () => {
             </div>
 
             <p className="mb-4 mt-1">En todos los casos se requiere un mínimo de 5 inscripciones para formar la categoría.</p>
-            <p className="mb-4"><b>Importante</b>: para las postas, se deberán ingresar los datos de las personas, en el orden que participarán. En el caso que sea un equipo de 2 personas, se deberán ingresar 2 veces los datos de la persona que repite disciplina, en la ubicación que corresponda.</p>
+            <p><b>Importante</b>: para las postas, se deberán ingresar los datos de las personas, en el orden que participarán.</p> 
+            <p className="mb-4">En el caso que sea un equipo de 2 personas, se deberán ingresar 2 veces los datos de la persona que repite disciplina, en la ubicación que corresponda.</p>
 
-            <p>Las distancias a recorrer son desafiantes y emocionantes</p>
+            <h3><b>Las distancias a recorrer son desafiantes y emocionantes:</b></h3>
             <ProximasIconos />
 
             <p className="mt-2">Todo en circuitos muy pintorescos del balneario Las Cañas y sus alrededores.</p>

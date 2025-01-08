@@ -40,7 +40,7 @@ const Footer = () => {
                         </Link>
                         <Link className="my-3 block flex footer_encabezados" href="/#">
                             <Correo />
-                            <span className="mt-1">contacto@pimpampum.com</span>
+                            <span className="mt-1">elomipuntocom@gmail.com</span>
                             <span className="text-teal-600 text-xs p-1"></span>
                         </Link>
                     </div>
