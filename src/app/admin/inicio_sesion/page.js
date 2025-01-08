@@ -8,10 +8,15 @@ import { loginUsuario } from "@/app/lib/userSlice";
 
 // CSS 
 import "./inicio_sesion.css"
+import { ErrorModal } from "../registro/errorModal";
 
 const ModalInicioSesion = ({ isOpen, onClose, onSwitch }) => {
     const router = useRouter();
     const dispatch = useDispatch();
+
+    // Modal de mensaje de error
+    const [errorMessage, setErrorMessage] = useState("");
+    const [showErrorModal, setShowErrorModal] = useState(false);
 
     // Para guardar la info
     const initialValues = {
@@ -29,6 +34,11 @@ const ModalInicioSesion = ({ isOpen, onClose, onSwitch }) => {
         });
     }
 
+    // Modal de error
+    const handleErrorClose = () => {
+        setShowErrorModal(false);
+    };
+
     // Iniciar sesion
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -36,16 +46,24 @@ const ModalInicioSesion = ({ isOpen, onClose, onSwitch }) => {
 
         try {
             // Disparar la acción de inicio de sesión
-            const userLoggedIn = await dispatch(loginUsuario(values)).unwrap();
-            //            console.log(userLoggedIn)
-            onClose()
-            setValues(initialValues)
-            // setLoading(false);
-            router.push('/')
+            const userLoggedIn = await dispatch(loginUsuario(values));
+            if (userLoggedIn.payload == "Mail o password incorrectos") {
+                setErrorMessage("El email o password estan incorrectos.");
+                setShowErrorModal(true);
+                return
+            }
+
+            if (userLoggedIn.meta.requestStatus === "fulfilled") {
+                onClose()
+                setValues(initialValues)
+                // setLoading(false);
+                router.push('/')
+            }
 
         } catch (error) {
-            //setLoading(false);
-            console.log(error)
+            setErrorMessage(error);
+            setShowErrorModal(true);
+            return
         }
     }
 
@@ -152,6 +170,13 @@ const ModalInicioSesion = ({ isOpen, onClose, onSwitch }) => {
                     </p>
                 </div>
             </div>
+
+            {/* Modal de mensaje de error */}
+            <ErrorModal
+                isOpen={showErrorModal}
+                onClose={handleErrorClose}
+                message={errorMessage}
+            />
         </div>
     );
 };

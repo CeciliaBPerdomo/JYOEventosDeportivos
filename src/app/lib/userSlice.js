@@ -53,8 +53,7 @@ export const loginUsuario = createAsyncThunk(
             const querySnapshot = await getDocs(q);
 
             if (querySnapshot.empty) {
-                console.log("No se encontraron documentos.");
-                return rejectWithValue("Usuario o contraseña incorrectos");
+                return rejectWithValue("Mail o password incorrectos");
             }
 
             // Obtener el usuario desde Firestore

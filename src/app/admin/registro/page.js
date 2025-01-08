@@ -7,9 +7,6 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from 'react-redux'
 import { agregarUsuario, loginUsuario } from "@/app/lib/userSlice";
 
-// Abre el modal de inicio de sesion
-import { openLoginModal } from "@/app/lib/modalSlice";
-
 //CSS
 import "./modalRegistro.css"
 
@@ -19,8 +16,10 @@ import { ConfirmationModal } from "./confirmationModal"
 import { ErrorModal } from "./errorModal";
 
 const ModalRegistro = ({ isOpen, onClose, onSwitch }) => {
+   
     // Modal de confirmacion
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+   
     // Modal de mensaje de error
     const [errorMessage, setErrorMessage] = useState("");
     const [showErrorModal, setShowErrorModal] = useState(false);
@@ -63,7 +62,7 @@ const ModalRegistro = ({ isOpen, onClose, onSwitch }) => {
         e.preventDefault()
 
         try {
-            let resp = await dispatch(agregarUsuario(values)).unwrap()
+            let resp = await dispatch(agregarUsuario(values))
 
             if (resp.payload == "El email ya está registrado") {
                 setErrorMessage("El email ingresado ya está registrado. Intenta con otro. O inicia sesión.");
