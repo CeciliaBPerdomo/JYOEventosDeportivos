@@ -1,16 +1,18 @@
 import Image from "next/image"
+import Link from "next/link"
 
 // Iconos
 import ProximasIconos from "../iconos/proximasIconos"
 
 //CSS 
 import "../../css_components/proximas.css"
+import Inscribite from "./20250427_boton"
 
 const Half = () => {
     return (
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center">
             <div className="relative flex flex-col 
-                md:flex-row  my-6 bg-white shadow-sm border 
+                md:flex-row my-6 bg-white shadow-sm border 
                 border-slate-200 rounded-lg">
                 <div className="relative p-2.5 md:w-2/5 shrink-0 overflow-hidden">
                     <Image
@@ -37,6 +39,7 @@ const Half = () => {
                                 Inscripciones abiertas
                             </button>
                         </div>
+
                         <div>
                             <h4 className="text-slate-800 text-lg sm:text-xl mt-9 md:text-2xl font-semibold proximas_h4">
                                 Triatlón Half Las Cañas
@@ -48,19 +51,24 @@ const Half = () => {
 
                         <div>
                             <ProximasIconos />
+
                             <div className="flex flex-col items-center justify-center space-y-2 mt-4">
-                                <button className="proximas_detalle_carrera">
+                                <Link href="/detalles">
+                                <button
+                                    className="proximas_detalle_carrera"
+                               
+                                >
                                     Ver detalles de la carrera
                                 </button>
-
-                                <button className="proximas_inscribite_carrera mt-1">
-                                    INSCRIBITE !
-                                </button>
+                                </Link>
+                                <Inscribite />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+          
         </div>
     )
 }
