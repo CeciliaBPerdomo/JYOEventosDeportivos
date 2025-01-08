@@ -61,6 +61,7 @@ export const BotonesInicio = () => {
             <ModalRegistro
                 isOpen={isModalOpen}
                 onClose={handleCloseModal}
+                onSwitch={handleOpenInicioSesion}
             />
 
             {/* Modal de inicio de sesion */}
