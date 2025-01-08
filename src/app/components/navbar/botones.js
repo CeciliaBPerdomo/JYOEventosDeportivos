@@ -49,12 +49,11 @@ export const BotonesInicio = () => {
                         REGISTRARSE
                     </button>
                 </div>
-            ) :
-                (
-                    <div>
-                        <p>Hola {currentUser.nombre}</p>
-                    </div>
-                )
+            ) : (
+                <div className="flex flex-row mt-4 space-x-2 w-full justify-end lg:w-auto lg:mt-0">
+                    <p className="navbar_bienvenida">Hola {currentUser.nombre}</p>
+                </div>
+            )
             }
 
             {/* Modal registro */}
